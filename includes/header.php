@@ -5,7 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Vite & Gourmand</title>
+    <!--
+    Le titre est défini par la page avant le chargement du header.
+
+    L'opérateur ?? fournit "Accueil" comme valeur par défaut
+    si la variable $pageTitle n'a pas été définie.
+-->
+<title>
+    <?= htmlspecialchars($pageTitle ?? 'Accueil') ?> | Vite & Gourmand
+</title>
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -67,14 +75,28 @@
 
                     <!-- Lien vers la page d'accueil -->
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php">
+                        <!--
+                            La classe "active" est ajoutée uniquement lorsque
+                            la page a défini $activePage avec la valeur "home".
+                        -->
+                        <a
+                            class="nav-link <?= ($activePage ?? '') === 'home' ? 'active' : '' ?>"
+                            href="index.php"
+                        >
                             Accueil
                         </a>
                     </li>
 
                     <!-- Lien vers la future page des menus -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <!--
+                            La classe "active" est ajoutée uniquement lorsque
+                            la page a défini $activePage avec la valeur "menus".
+                        -->
+                        <a
+                            class="nav-link <?= ($activePage ?? '') === 'menus' ? 'active' : '' ?>"
+                            href="menus.php"
+                        >
                             Nos menus
                         </a>
                     </li>

@@ -1,29 +1,27 @@
 <?php
 
 /*
- * Données temporaires utilisées pour construire la page.
+ * Charge tous les menus temporaires depuis le fichier de données.
  *
- * Plus tard, ces menus seront récupérés depuis la base
- * de données. Pour le moment, ce tableau permet déjà
- * de développer et de tester l'affichage dynamique.
+ * Le tableau retourné par data/menus.php est stocké
+ * dans la variable $menus.
  */
-$featuredMenus = [
-    [
-        'name' => 'Formule Express',
-        'description' => 'Un plat du jour accompagné de son dessert.',
-        'price' => 14.90,
-    ],
-    [
-        'name' => 'Menu Tradition',
-        'description' => 'Une entrée, un plat généreux et un dessert maison.',
-        'price' => 18.90,
-    ],
-    [
-        'name' => 'Menu Végétarien',
-        'description' => 'Une formule complète, colorée et sans viande.',
-        'price' => 16.90,
-    ],
-];
+$menus = require __DIR__ . '/data/menus.php';
+
+/*
+ * Sélectionne les trois premiers menus pour la page d'accueil.
+ *
+ * array_slice permet d'extraire une partie d'un tableau :
+ * - 0 : commencer au premier élément ;
+ * - 3 : récupérer au maximum trois éléments.
+ */
+$featuredMenus = array_slice($menus, 0, 3);
+
+/*
+ * Informations transmises à header.php.
+ */
+$pageTitle = 'Accueil';
+$activePage = 'home';
 
 /* Charge l'en-tête commun du site. */
 require_once __DIR__ . '/includes/header.php';
@@ -73,7 +71,7 @@ require_once __DIR__ . '/includes/header.php';
                     <div class="d-flex flex-column flex-sm-row gap-3">
 
                         <!-- Bouton principal -->
-                        <a class="btn btn-primary btn-lg" href="#">
+                        <a class="btn btn-primary btn-lg" href="menus.php">
                             Découvrir nos menus
                         </a>
 
@@ -129,38 +127,20 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Grille contenant les menus -->
             <div class="row g-4">
 
+                <?php foreach ($featuredMenus as $menu): ?>
+
                 <?php
                 /*
-                * La boucle parcourt le tableau $featuredMenus.
+                * Charge le composant pour le menu actuellement
+                * parcouru par la boucle.
                 *
-                * À chaque passage, $menu contient les informations
-                * d'un menu et génère automatiquement une colonne.
+                * require est volontairement utilisé sans "once",
+                * car le composant doit être chargé pour chaque menu.
                 */
-                foreach ($featuredMenus as $menu):
+                require __DIR__ . '/includes/menu-card.php';
                 ?>
 
-                    <div class="col-md-6 col-lg-4">
-                        <article class="menu-card h-100 p-4">
-
-                            <!-- Nom du menu -->
-                            <h3 class="h4">
-                                <?= htmlspecialchars($menu['name']) ?>
-                            </h3>
-
-                            <!-- Description du menu -->
-                            <p class="text-secondary">
-                                <?= htmlspecialchars($menu['description']) ?>
-                            </p>
-
-                            <!-- Prix formaté avec deux chiffres après la virgule -->
-                            <p class="menu-price mb-0">
-                                <?= number_format($menu['price'], 2, ',', ' ') ?> €
-                            </p>
-
-                        </article>
-                    </div>
-
-                <?php endforeach; ?>
+            <?php endforeach; ?>
 
             </div>
         </div>
