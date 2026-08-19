@@ -1,0 +1,235 @@
+/* ==================================================
+   VARIABLES DE LA CHARTE GRAPHIQUE
+
+   Les couleurs et polices principales sont regroupées
+   ici afin de pouvoir modifier facilement tout le site.
+================================================== */
+:root {
+    /* Couleurs de Vite & Gourmand */
+    --vg-corail: #f0443e;
+    --vg-aubergine: #452039;
+    --vg-creme: #fff4e2;
+    --vg-blanc: #ffffff;
+
+    /* Polices de la charte */
+    --vg-police-titre: "Fredoka", sans-serif;
+    --vg-police-texte: "Nunito Sans", sans-serif;
+
+    /*
+       Redéfinition de la couleur principale Bootstrap.
+       Les classes comme text-primary utiliseront le corail.
+    */
+    --bs-primary-rgb: 240, 68, 62;
+}
+
+
+/* ==================================================
+   STYLES GÉNÉRAUX
+================================================== */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    /*
+       Transforme la page en colonne flexible afin que
+       le pied de page reste en bas de l'écran.
+    */
+    display: flex;
+    flex-direction: column;
+
+    /* Apparence générale du site */
+    color: var(--vg-aubergine);
+    background-color: var(--vg-creme);
+    font-family: var(--vg-police-texte);
+}
+
+/*
+   Le contenu principal occupe tout l'espace disponible.
+   Cela repousse automatiquement le footer vers le bas
+   lorsque la page contient peu de contenu.
+*/
+main {
+    flex: 1;
+}
+
+/* Les titres utilisent la police Fredoka */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--vg-police-titre);
+}
+
+
+/* ==================================================
+   BARRE DE NAVIGATION
+================================================== */
+
+/*
+   La classe Bootstrap bg-body-tertiary possède déjà
+   une couleur. !important permet ici de la remplacer.
+*/
+.navbar.bg-body-tertiary {
+    background-color: var(--vg-creme) !important;
+    border-bottom: 1px solid rgba(69, 32, 57, 0.12);
+}
+
+
+/* Nom de la marque */
+.navbar-brand {
+    color: var(--vg-aubergine);
+    font-family: var(--vg-police-titre);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+/* Liens de navigation */
+.nav-link {
+    color: var(--vg-aubergine);
+    font-weight: 600;
+}
+
+
+/* Effet au survol et indication de la page active */
+.nav-link:hover,
+.nav-link.active {
+    color: var(--vg-corail) !important;
+}
+
+
+/* ==================================================
+   BOUTONS
+================================================== */
+
+/* Bouton principal de la charte */
+.btn-primary {
+    --bs-btn-bg: var(--vg-corail);
+    --bs-btn-border-color: var(--vg-corail);
+    --bs-btn-hover-bg: var(--vg-aubergine);
+    --bs-btn-hover-border-color: var(--vg-aubergine);
+    --bs-btn-active-bg: var(--vg-aubergine);
+    --bs-btn-active-border-color: var(--vg-aubergine);
+
+    font-weight: 700;
+}
+
+
+/* Bouton secondaire */
+.btn-outline-dark {
+    --bs-btn-color: var(--vg-aubergine);
+    --bs-btn-border-color: var(--vg-aubergine);
+    --bs-btn-hover-bg: var(--vg-aubergine);
+    --bs-btn-hover-border-color: var(--vg-aubergine);
+
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   BANNIÈRE D’ACCUEIL
+================================================== */
+
+/* Remplace le fond gris clair fourni par Bootstrap */
+.hero.bg-light {
+    background-color: var(--vg-creme) !important;
+}
+
+
+/* Limite la largeur du texte principal pour faciliter la lecture */
+.hero h1 {
+    max-width: 650px;
+    color: var(--vg-aubergine);
+}
+
+
+/*
+   Apparence temporaire de l’emplacement de l’image.
+   Il sera remplacé plus tard par un véritable visuel.
+*/
+.hero .bg-secondary-subtle {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(240, 68, 62, 0.22),
+            rgba(69, 32, 57, 0.12)
+        ) !important;
+
+    border: 2px dashed rgba(69, 32, 57, 0.25);
+}
+
+/* ==================================================
+   PIED DE PAGE
+================================================== */
+
+.site-footer {
+    color: var(--vg-creme);
+    background-color: var(--vg-aubergine);
+}
+
+
+/* Nom de la marque dans le pied de page */
+.footer-brand {
+    font-family: var(--vg-police-titre);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+
+/* Informations secondaires */
+.footer-description,
+.footer-copyright {
+    color: rgba(255, 244, 226, 0.75);
+    font-size: 0.875rem;
+}
+
+
+/* Liens du pied de page */
+.footer-navigation a {
+    color: var(--vg-creme);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+/* Changement de couleur au passage de la souris */
+.footer-navigation a:hover {
+    color: var(--vg-corail);
+}
+
+/* ==================================================
+   MENUS MIS EN AVANT
+================================================== */
+
+.featured-menus {
+    background-color: var(--vg-blanc);
+}
+
+
+/* Carte personnalisée représentant un menu */
+.menu-card {
+    background-color: var(--vg-creme);
+    border-left: 5px solid var(--vg-corail);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Léger mouvement lorsque la souris passe sur la carte */
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(69, 32, 57, 0.12);
+}
+
+
+/* Mise en valeur du prix */
+.menu-price {
+    color: var(--vg-corail);
+    font-family: var(--vg-police-titre);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
