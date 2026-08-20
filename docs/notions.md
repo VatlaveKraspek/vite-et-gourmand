@@ -221,6 +221,60 @@ PHP peut ensuite récupérer cette information.
 
 ---
 
+## Requête POST
+
+Une requête `POST` permet d'envoyer des données depuis un formulaire vers le serveur.
+
+Dans le projet, le formulaire de contact utilise `method="post"` pour envoyer l'adresse e-mail, le titre et la description à `contact.php`.
+
+---
+
+## $_POST
+
+`$_POST` est une variable spéciale de PHP.
+
+Elle permet de récupérer les données envoyées par un formulaire en méthode `POST`.
+
+Exemple dans le formulaire de contact :
+
+`$_POST['email']`
+
+---
+
+## trim()
+
+`trim()` supprime les espaces inutiles au début et à la fin d'une chaîne de caractères.
+
+Cela évite par exemple qu'un champ contenant seulement des espaces soit considéré comme une vraie valeur.
+
+---
+
+## filter_var()
+
+`filter_var()` permet de valider ou filtrer une valeur en PHP.
+
+Dans le formulaire de contact, cette fonction sert à vérifier que l'adresse e-mail respecte un format valide.
+
+---
+
+## FILTER_VALIDATE_EMAIL
+
+`FILTER_VALIDATE_EMAIL` est un filtre PHP utilisé avec `filter_var()`.
+
+Il permet de vérifier si une chaîne de caractères correspond à une adresse e-mail valide.
+
+---
+
+## htmlspecialchars()
+
+`htmlspecialchars()` transforme certains caractères spéciaux en entités HTML.
+
+Cette fonction protège l'affichage des données saisies par l'utilisateur dans une page HTML.
+
+Dans le formulaire de contact, elle est utilisée pour réafficher les valeurs saisies sans interpréter du code HTML.
+
+---
+
 ## Données temporaires
 
 Avant de mettre en place une base de données, il est possible d'utiliser des données simulées.

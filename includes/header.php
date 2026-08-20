@@ -101,9 +101,12 @@
                         </a>
                     </li>
 
-                    <!-- Lien vers la future page de contact -->
+                    <!-- Lien vers la page de contact -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a
+                            class="nav-link <?= ($activePage ?? '') === 'contact' ? 'active' : '' ?>"
+                            href="contact.php"
+                        >
                             Contact
                         </a>
                     </li>
@@ -130,4 +133,3 @@
 
 </header>
 <!-- FIN DE L'EN-TÊTE -->
-</header>

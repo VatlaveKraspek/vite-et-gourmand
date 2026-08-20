@@ -75,6 +75,26 @@ Elle utilise actuellement les données temporaires contenues dans `data/menus.ph
 
 Une gestion simple du cas où le menu demandé n'existe pas est également présente.
 
+### Formulaire de contact
+
+Une première version de la page :
+
+`contact.php`
+
+permet d'afficher un formulaire de contact avec les champs demandés :
+
+- adresse e-mail ;
+- titre ;
+- description.
+
+Le formulaire utilise la méthode `POST`.
+
+La validation HTML native est en place avec `required` et `type="email"`.
+
+Une validation PHP côté serveur vérifie également que les champs ne sont pas vides et que l'adresse e-mail est valide.
+
+L'envoi réel de l'e-mail n'est pas encore développé.
+
 ---
 
 ## Éléments actuellement provisoires
@@ -107,7 +127,7 @@ Le projet devra notamment intégrer progressivement :
 - espace employé ;
 - espace administrateur ;
 - gestion des avis clients ;
-- formulaire de contact ;
+- envoi de l'e-mail du formulaire de contact ;
 - gestion des horaires ;
 - base de données relationnelle ;
 - base de données non relationnelle ;
