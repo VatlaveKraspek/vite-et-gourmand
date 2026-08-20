@@ -1,4 +1,10 @@
-<div class="col-md-6 col-lg-4">
+<div
+    class="menu-item col-md-6 col-lg-4"
+    data-theme="<?= htmlspecialchars($menu['theme']) ?>"
+    data-diet="<?= htmlspecialchars($menu['diet']) ?>"
+    data-price="<?= (float) $menu['price'] ?>"
+    data-minimum-people="<?= (int) $menu['minimum_people'] ?>"
+>
     <article class="menu-card h-100 p-4">
 
         <!-- Titre du menu -->
